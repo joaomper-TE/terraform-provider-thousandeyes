@@ -1,4 +1,3 @@
----
 on: [pull_request]
 jobs:
   goreleaser:
@@ -40,9 +39,9 @@ jobs:
           terraform_wrapper: false
       - run: go test -v -cover ./...
         env:
+          TE_TOKEN: ${{ secrets.TE_TOKEN }}
           TE_AID: ${{ secrets.TE_AID }}
           TE_API_ENDPOINT: 'https://api.stg.thousandeyes.com/v6'
-          TE_TOKEN: ${{ secrets.TE_TOKEN }}
           TF_ACC: '1'
   unit:
     name: Unit Tests
